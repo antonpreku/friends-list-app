@@ -1,0 +1,22 @@
+li {
+margin-top: 1rem;
+}
+h4{
+margin: 5px 10px 2px 0px;
+}
+.frind{
+    justify-content: flex-start; 
+}
+.bar{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+button{
+    padding: 5px;
+    margin: 2px;
+
+}
+#error{
+    color: red;
+}
