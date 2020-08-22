@@ -1,1 +1,1 @@
-web: npm stert
+web: node main.js
