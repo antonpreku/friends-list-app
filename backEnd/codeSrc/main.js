@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "..", "/public")));
 app.use('/api', require('./api.js'))
 
 
-const PORT=3330
+const PORT= process.env.PORT || 3330;
 const init = async function() {
     await db.Users.sync()
     app.listen(PORT, function() {
