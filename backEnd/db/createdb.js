@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const { STRING } = require('sequelize');
-const conn= new Sequelize('postgres://localhost/friadsDB',{logging: false})
+const conn= new Sequelize(process.env.DATABASE_URL ||'postgres://localhost/friadsDB',{logging: false})
 
 const Users= conn.define( 'users', {
     name:{
