@@ -20,7 +20,6 @@ const getData= async ()=>{
     
     reSort()
     arr2.forEach(el => {
-        console.log(el.name);
         const div= document.createElement('div')
         div.className="frind"
         nr++
@@ -55,7 +54,7 @@ const getData= async ()=>{
             value.innerHTML=val     
             max(val) 
             fetch('/api/'+ name, {
-                method: 'put',
+                method: 'PUT',
                 headers:{
                     'Content-Type': 'application/json'
                 },
@@ -70,7 +69,7 @@ const getData= async ()=>{
             value.innerHTML=val  
                       max(val)      
             fetch('/api/'+ name, {
-                method: 'put',
+                method: 'PUT',
                 headers:{
                     'Content-Type': 'application/json'
                 },
@@ -90,16 +89,28 @@ function max(nr){
         }
       })
     }
-
+    
+    
 getData();
 
 addBtn.addEventListener('click', ()=>{
-    let i=5
-    let n=0
-    console.log();
-    
+    let elem= false
+   
+        arr2.forEach(el=>{
+          if(el.name === newName.value){
+              elem = true
+          }
+        })
+       
+
     if(newName.value === ''){
             inp.innerHTML=`<h5 id="error">Please put a name</h5>`
+        setTimeout(() => {
+            inp.parentNode.removeChild(inp)
+        }, 3000);
+    
+    }else if(elem){
+        inp.innerHTML=`<h5 id="error">This name is a dublicate</h5>`
         setTimeout(() => {
             inp.parentNode.removeChild(inp)
         }, 3000);
@@ -112,24 +123,10 @@ addBtn.addEventListener('click', ()=>{
         },
         body: JSON.stringify({
             name: `${newName.value}`,
-            value: i
+            value: 5
         })
     })
-    const div= document.createElement('div')
-    div.className="frind"
-        n++
-        div.innerHTML=`
-            <li id="delName${n}">${newName.value}</li>
-            <div class="bar">
-                <h4 id="value${n}">${i}</h4>
-                <button type="submit" id="plusBtn${n}">+</button>
-                <button type="submit" id="minusBtn${n}">-</button>
-                <button type="submit" class="deleteBtn${n}">x</button>
-                <br><br>
-            </div>
-            `
-            newName.innerHTML= ''
-    userList.appendChild(div)
-}
+     location.reload()  
+    }
 });
 

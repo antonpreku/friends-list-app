@@ -41,7 +41,7 @@ router.put('/:name', (req,res,next)=>{
                 name: req.params.name
             }
         })
-        res.redirect('/')
+        res.status(201)
 
     }catch(err){
         next(err)
